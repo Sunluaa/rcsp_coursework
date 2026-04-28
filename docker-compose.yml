@@ -1,0 +1,16 @@
+name: ${COMPOSE_PROJECT_NAME:-knowledgebaza}
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: knowledgebaza
+      POSTGRES_USER: knowledgebaza
+      POSTGRES_PASSWORD: knowledgebaza
+    ports:
+      - "${POSTGRES_HOST_PORT:-55432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

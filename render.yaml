@@ -1,6 +1,6 @@
 databases:
   - name: knowledgebaza-db
-    plan: free
+    plan: Free
 
 services:
   - type: web
@@ -29,7 +29,7 @@ services:
     name: knowledgebaza-frontend
     runtime: static
     rootDir: frontend
-    plan: free
+    plan: Free
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
     routes:

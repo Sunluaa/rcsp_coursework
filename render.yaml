@@ -9,7 +9,7 @@ services:
     rootDir: backend
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    startCommand: alembic upgrade head && python -m scripts.seed && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
     envVars:
       - key: DATABASE_URL
@@ -26,6 +26,12 @@ services:
         value: local
       - key: LOCAL_STORAGE_PATH
         value: uploads
+      - key: SEED_ADMIN_PASSWORD
+        value: Admin12345!
+      - key: SEED_EDITOR_PASSWORD
+        value: Editor12345!
+      - key: SEED_EMPLOYEE_PASSWORD
+        value: Employee12345!
 
   - type: web
     name: knowledgebaza-frontend
